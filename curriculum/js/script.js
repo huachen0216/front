@@ -13,17 +13,42 @@ function $(id) {
     return document.getElementById(id)
 }
 
+/**
+ * 创建元素
+ * @param {string} node 
+ */
+function createEle(node) {
+    return document.createElement(node)
+}
+
+/**
+ * 设置节点属性
+ * @param {string} node 
+ * @param {string} style 
+ * @param {string} value 
+ */
+function setAttr(node, styles) {
+    for (const key in styles) {
+        if (styles.hasOwnProperty(key)) {
+            node.setAttribute(key, styles[key])
+        }
+    }
+}
+
 // 获取div
 const divDom = $("table-data-wrap");
 
-const tableDom = document.createElement("table");
+const tableDom = createEle("table");
+const styles = {
+    "width": "100%",
+    "border": "0",
+    "cellpadding": "0",
+    "cellspacing": "0",
+    "id": "table-data-wrap"
+}
 
-// tableDom.setAttribute('width', '100%');
-tableDom.width = "100%";
-tableDom.setAttribute("border", "0");
-tableDom.setAttribute("cellpadding", "0");
-tableDom.setAttribute("cellspacing", "0");
-tableDom.setAttribute("id", "table-data-wrap"); 
+
+setAttr(tableDom, styles);
 
 tableDom.innerHTML = `<thead>
                         <tr>
